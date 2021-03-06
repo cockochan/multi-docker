@@ -10,7 +10,7 @@ script:
   - docker run -e CI=true cockochan/react-test npm test
 
 after_success:
-  - docker build -t cockochan/multi-client
+  - docker build -t cockochan/multi-client ./client
   - docker build -t cockochan/multi-ngnix ./ngnix
   - docker build -t cockochan/multi-server ./server
   - docker build -t cockochan/multi-worker ./worker
