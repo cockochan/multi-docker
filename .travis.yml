@@ -1,5 +1,6 @@
 sudo: required
 language: generic
+
 services:
   - docker
 
@@ -11,13 +12,13 @@ script:
 
 after_success:
   - docker build -t cockochan/multi-client ./client
-  - docker build -t cockochan/multi-ngnix ./ngnix
+  - docker build -t cockochan/multi-nginx ./nginx
   - docker build -t cockochan/multi-server ./server
   - docker build -t cockochan/multi-worker ./worker
-#Log in dokha
+  # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-#push the images to gh
+  # Take those images and push them to docker hub
   - docker push cockochan/multi-client
-  - docker push cockochan/multi-ngnix
+  - docker push cockochan/multi-nginx
   - docker push cockochan/multi-server
   - docker push cockochan/multi-worker
