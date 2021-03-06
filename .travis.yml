@@ -5,20 +5,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t cockochan/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t satan555/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true cockochan/react-test npm test
+  - docker run -e CI=true satan555/react-test npm test
 
 after_success:
-  - docker build -t cockochan/multi-client ./client
-  - docker build -t cockochan/multi-nginx ./nginx
-  - docker build -t cockochan/multi-server ./server
-  - docker build -t cockochan/multi-worker ./worker
+  - docker build -t satan555/multi-client ./client
+  - docker build -t satan555/multi-nginx ./nginx
+  - docker build -t satan555/multi-server ./server
+  - docker build -t satan555/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push cockochan/multi-client
-  - docker push cockochan/multi-nginx
-  - docker push cockochan/multi-server
-  - docker push cockochan/multi-worker
+  - docker push satan555/multi-client
+  - docker push satan555/multi-nginx
+  - docker push satan555/multi-server
+  - docker push satan555/multi-worker
