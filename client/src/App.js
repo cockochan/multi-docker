@@ -4,10 +4,11 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import OtherPage from './OtherPage';
 import Fib from './Fib';
-
+import hz from 'nginx/default.conf'
 function App() {
   return (
     <Router>
+      <hz></hz>
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -17,7 +18,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            
+
             Learn React
           </a>
           <Link to="/">Home</Link>
